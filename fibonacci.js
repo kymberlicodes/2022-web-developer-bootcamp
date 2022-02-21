@@ -1,24 +1,24 @@
-var n = 5;
-
 function fibonacciGenerator(n) {
-    var arr = [];
-    var count = n;
-    if (n === 1) {
-        arr = [0]
-        return arr;
-    } else if (n === 2) {
-        arr = [0, 1];
-        return arr;
-    } else {
-        arr = [0, 1];
-        while (count > 0) {
-            for (var i = 0; i <= arr.length; i++) {
-                arr.push(arr[-2] + arr[-1]);
-                count--;
-            }
-        }
-        return arr;
+    var output = [];
+
+    if(n === 1) {
+        output = [0];
     }
+    else if (n === 2) {
+        output = [0,1];
+    }
+    else {
+        output = [0,1];
+
+        for (var i = 2; i < n; i++) {
+            var sumOfLastTwoNum = output[output.length-2] + output[output.length-1];
+            output.push(sumOfLastTwoNum);
+            output[output.length - 1];
+        }
+    }
+
+    return output;
 }
 
-console.log(fibonacciGenerator(n));
+output = fibonacciGenerator(125);
+console.log(output);
