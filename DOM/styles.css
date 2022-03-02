@@ -1,8 +1,4 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-
-h1 {
+.huge {
     color: red;
+    font-size: 10rem;
 }
