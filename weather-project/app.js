@@ -19,6 +19,8 @@ app.post("/", function(req, res) {
         unitParam,
         apiKeyParam
     ].join('&');
+
+    console.log(process.env);
         
     var restUrl = `https://api.openweathermap.org/data/2.5/weather?${queryParams}`;
     https.get(restUrl, function(response) {

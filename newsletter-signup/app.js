@@ -38,8 +38,6 @@ app.post("/", function(req, res) {
         auth: process.env.API_KEY
     }
 
-    console.log(typeof process.env.API_KEY);
-
     const request = https.request(`https://us14.api.mailchimp.com/3.0/lists/a93049d522`, options, function(response) {
         response.on("data", function(data) {
             console.log(JSON.parse(data));
