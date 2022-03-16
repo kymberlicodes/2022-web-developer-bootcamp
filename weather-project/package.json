@@ -10,6 +10,7 @@
   "author": "Kymberli",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "nodemon": "^2.0.15"
   }

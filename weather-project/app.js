@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const https = require('https');
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
@@ -12,7 +13,7 @@ app.get('/', function(req, res) {
 app.post("/", function(req, res) {
     var zipCodeQueryParam = `zip=${Number(req.body.zipcode)}`;
     var unitParam = `units=imperial`;
-    var apiKeyParam = `appid=${}`;
+    var apiKeyParam = `appid=${process.env.API_KEY}`;
     var queryParams = [
         zipCodeQueryParam,
         unitParam,
