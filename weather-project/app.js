@@ -12,7 +12,7 @@ app.get('/', function(req, res) {
 app.post("/", function(req, res) {
     var zipCodeQueryParam = `zip=${Number(req.body.zipcode)}`;
     var unitParam = `units=imperial`;
-    var apiKeyParam = `appid=1432721a7524165621fb54e15b5ded03`;
+    var apiKeyParam = `appid=${}`;
     var queryParams = [
         zipCodeQueryParam,
         unitParam,
