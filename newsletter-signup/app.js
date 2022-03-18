@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const https = require('https');
-const { env } = require('process');
+
 require('dotenv').config();
 
 const app = express();
@@ -38,14 +38,23 @@ app.post("/", function(req, res) {
         auth: process.env.API_KEY
     }
 
-    const request = https.request(`https://us14.api.mailchimp.com/3.0/lists/a93049d522`, options, function(response) {
+    const request = https.request(`https://us14.api.mailchimp.com/3.0/lists/${process.env.LIST_ID}`, options, function(response) {    
         response.on("data", function(data) {
-            console.log(JSON.parse(data));
+            if (response.statusCode === 200) {
+                res.sendFile(`${__dirname}/success.html`);
+            } else {
+                res.sendFile(`${__dirname}/failure.html`);
+            }
+            // console.log(JSON.parse(data));
         });
     });
         
     request.write(jsonData);
     request.end();
+});
+
+app.post('/failure', function(req, res) {
+    res.redirect('/');
 });
 
 app.listen(3000, function() {
